@@ -5,9 +5,6 @@
 
 body {
     background-color: #252525;
-    background: url(images/background.png);
-    background-position: left bottom;
-    background-repeat: no-repeat;
     font-family: 'AdverGothicItalic', arial;
     color: #ff0000;
     padding-right: 36px;
@@ -23,4 +20,8 @@ img {
 
 h2 {
     margin-top: 48px;
+}
+
+a:hover, a:active, a:focus {
+     outline: 0;
 }
