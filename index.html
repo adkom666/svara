@@ -117,11 +117,23 @@
                 highlightMenuItem(sectionName);
                 showPage(sectionName);
             }
+            function afterSharp() {
+                var urlParts = location.toString().split('#');
+                if (urlParts.length > 1) {
+                    return urlParts[1];
+                } else {
+                    return '';
+                }
+            }
+            var requestedSectionName = afterSharp();
+            if (requestedSectionName.length > 0) {
+                localStorage.setItem('svara_section_name', requestedSectionName);
+            }
         </script>
     </head>
     <body onLoad=restoreSection()>
         <div id="header">
-            <a id="header_link" href="#" onClick=setSection('title')>
+            <a id="header_link" href="#title" onClick=setSection('title')>
                 <table id="header_table">
                     <tr class="closer">
                         <td class="closer">
@@ -141,9 +153,9 @@
         </div>
         <div id="menu">
             <ul class="nav" style="margin-top: 48px;">
-                <li><a id="a_title" href="#" onClick=setSection('title')>ГЛАВНАЯ</a></li>
-                <li><a id="a_rules" href="#" onClick=setSection('rules')>ПРАВИЛА</a></li>
-                <li><a id="a_donations" href="#" onClick=setSection('donations')>НА ПИВАС</a></li>
+                <li><a id="a_title" href="#title" onClick=setSection('title')>ГЛАВНАЯ</a></li>
+                <li><a id="a_rules" href="#rules" onClick=setSection('rules')>ПРАВИЛА</a></li>
+                <li><a id="a_donations" href="#donations" onClick=setSection('donations')>НА ПИВАС</a></li>
             </ul>
             <br />
             <p style="margin-top: 48px;">
