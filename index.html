@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Сайт об игре в свару под Android">
         <meta name="keywords" content="свара, карты, андроид, игра, приложение, svara, cards, android, game, app">
         <meta property="og:locale" content="ru_RU">
@@ -14,133 +15,10 @@
         <title>SVARA</title>
         <link href="images/ic_svara.png" rel="icon">
         <link href="style.css" rel="stylesheet" type="text/css">
-        <style>
-            body {
-                background: #252525;
-            }
-            #header_link {
-                color: inherit;
-                font-size: 32px;
-                text-decoration: none;
-            }
-            #header_table {
-                border: 0;
-                margin-left: 12px;
-                margin-top: 10px;
-                padding: 0;
-            }
-            #header_icon {
-                margin-right: 8px;
-            }
-            #header {
-                background: #050505;
-                background: linear-gradient(to top, #404040, #050505);
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 80px;
-                border: none;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-            }
-            .closer {
-                margin: 0;
-                padding: 0;
-            }
-            #menu {
-                position: absolute;
-                top: 80px;
-                bottom: 0;
-                width: 340px;
-                border: none;
-                overflow: hidden;
-            }
-            #main_container {
-                position: absolute;
-                top: 80px;
-                bottom: 0;
-                left: 340px;
-                right: 0;
-                border: none;
-                overflow: hidden;
-            }
-            .main_content {
-                width: 100%;
-                height: 100%;
-                border: none;
-                overflow: hidden;
-            }
-            ul.nav {
-                font-size: 22px;
-                margin: 0;
-                padding-left: 0;
-                list-style: none;
-            }
-            ul.nav a {
-                color: inherit;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 12px;
-                padding-bottom: 12px;
-                text-decoration: none;
-            }
-            ul.nav a:hover {
-                background-color: #474747;
-            }
-            li {
-                margin-top: 28px;
-                height: 36px;
-            }
-        </style>
-        <script src="jquery-1.12.4.js">
-        </script>
-        <script>
-            function showPage(pageName) {
-                var innerHtmlObj = 
-                    '<object type="text/html" data="' + 
-                    pageName + 
-                    '.html" class="main_content" scrolling="no" seamless="seamless"></object>';
-                document.getElementById("main_container").innerHTML = innerHtmlObj;
-            }
-            function highlightMenuItem(menuItemName) {
-                var menuItemId = '#a_' + menuItemName;
-                jQuery(menuItemId).css('background-color', '#474747');
-            }
-            function unhighlightMenuItem(menuItemName) {
-                var menuItemId = '#a_' + menuItemName;
-                jQuery(menuItemId).css('background-color', '');
-            }
-            function setSection(sectionName) {
-                var previousSectionName = localStorage.getItem('svara_section_name') || "title";
-                unhighlightMenuItem(previousSectionName);
-                highlightMenuItem(sectionName);
-                localStorage.setItem('svara_section_name', sectionName);
-                showPage(sectionName);
-            }
-            function restoreSection() {
-                var sectionName = localStorage.getItem('svara_section_name') || "title";
-                highlightMenuItem(sectionName);
-                showPage(sectionName);
-            }
-            function afterSharp() {
-                var urlParts = location.toString().split('#');
-                if (urlParts.length > 1) {
-                    return urlParts[1];
-                } else {
-                    return '';
-                }
-            }
-            var requestedSectionName = afterSharp();
-            if (requestedSectionName.length > 0) {
-                localStorage.setItem('svara_section_name', requestedSectionName);
-            }
-        </script>
     </head>
-    <body onLoad=restoreSection()>
-        <div id="header">
-            <a id="header_link" href="#title" onClick=setSection('title')>
+    <body>
+        <div id="header" class="vgrad">
+            <a id="header_link" href="index.html">
                 <table id="header_table">
                     <tr class="closer">
                         <td class="closer">
@@ -160,9 +38,9 @@
         </div>
         <div id="menu">
             <ul class="nav" style="margin-top: 48px;">
-                <li><a id="a_title" href="#title" onClick=setSection('title')>ГЛАВНАЯ</a></li>
-                <li><a id="a_rules" href="#rules" onClick=setSection('rules')>ПРАВИЛА</a></li>
-                <li><a id="a_donations" href="#donations" onClick=setSection('donations')>НА ПИВАС</a></li>
+                <li><a class="current" href="index.html">ГЛАВНАЯ</a></li>
+                <li><a class="other" href="rules.html">ПРАВИЛА</a></li>
+                <li><a class="other" href="donations.html">НА ПИВАС</a></li>
             </ul>
             <br />
             <p style="margin-top: 48px;">
@@ -183,6 +61,54 @@
             </p>
         </div>
         <div id="main_container">
+            <h2>СВАРА - ПОКЕР ДЛЯ ПРОСТЫХ ПАЦАНОВ</h2>
+            <p class="text">
+                Игра под Android. Действия игры происходят на стройке во время обеда, где вы можете поиграть в свару с одним из строителей.
+            </p>
+            <p class="text">
+                Бесплатная, без рекламы, покупки в игре - техническая реализация добровольных пожертвований, 
+                за ними не скрыт никакой функционал.
+            </p>
+            <p class="text">
+                Ограничение по возрасту: 18+
+            </p>
+            <br />
+            <iframe 
+                class="exponat" 
+                src="https://www.youtube.com/embed/vJYkWb5OvRw" 
+                width="315" 
+                height="560" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <br />
+            <p>
+                <img 
+                    class="exponat" 
+                    src="images/screen_title.png" 
+                    alt="Screenshot 1" 
+                    height="480px" 
+                    border="1" />
+                <img 
+                    class="exponat" 
+                    src="images/screen_removal.png" 
+                    alt="Screenshot 2" 
+                    height="480px" 
+                    border="1" />
+                <img 
+                    class="exponat" 
+                    src="images/screen_game.png" 
+                    alt="Screenshot 3" 
+                    height="480px" 
+                    border="1" />
+                <img 
+                    class="exponat" 
+                    src="images/screen_lose.png" 
+                    alt="Screenshot 4" 
+                    height="480px" 
+                    border="1" />
+            </p>
         </div>
     </body>
 </html>
